@@ -1,0 +1,50 @@
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+entity hamming74_encoder_tb is
+end hamming74_encoder_tb;
+architecture Behavioral of hamming74_encoder_tb is
+signal clk : std_logic := '0';
+signal reset : std_logic := '0';
+signal data_in : std_logic_vector(3 downto 0) := (others => '0');
+signal codeword_out : std_logic_vector(6 downto 0);
+component hamming74_encoder is
+Port ( clk : in STD_LOGIC;
+reset : in STD_LOGIC;
+data_in : in STD_LOGIC_VECTOR (3 downto 0);
+codeword_out : out STD_LOGIC_VECTOR (6 downto 0));
+end component;
+begin
+uut: hamming74_encoder port map (
+clk => clk,
+reset => reset,
+data_in => data_in,
+codeword_out => codeword_out
+);
+clk_process :process
+begin
+clk <= '0';
+wait for 10 ns;
+clk <= '1';
+wait for 10 ns;
+end process;
+stim_proc: process
+begin
+-- hold reset state for 100 ns.
+wait for 100 ns;
+reset <= '0';
+wait for 100 ns;
+-- insert stimulus here
+data_in <= "0001";
+wait for 20 ns;
+data_in <= "0010";
+wait for 20 ns;
+data_in <= "0100";
+wait for 20 ns;
+data_in <= "1000";
+wait for 20 ns;
+data_in <= "1100";
+wait for 20 ns;
+wait;
+end process;
+end Behavioral;
