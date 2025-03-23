@@ -43,7 +43,7 @@ Hamming (7,4) | [Kaavya Varshitha Raman Shantha](https://github.com/KaavyaVarshi
 
 Version|Date|Comments
 -------|----|--------
-1.0|Nov 2023|Initial release
+1.0|Jan 2025|Final
 
 
 
